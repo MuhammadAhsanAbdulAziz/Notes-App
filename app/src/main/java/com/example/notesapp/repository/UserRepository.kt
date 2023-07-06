@@ -1,13 +1,10 @@
 package com.example.notesapp.repository
 
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.notesapp.api.UserApi
 import com.example.notesapp.models.UserRequest
 import com.example.notesapp.models.UserResponse
-import com.example.notesapp.utils.Constants.TAG
 import com.example.notesapp.utils.NetworkResult
 import dagger.hilt.android.qualifiers.ApplicationContext
 import org.json.JSONObject
@@ -23,7 +20,7 @@ class UserRepository @Inject constructor(private val userApi: UserApi) {
 
     suspend fun registerUser(userRequest: UserRequest) {
         _userResponseLiveData.postValue(NetworkResult.Loading())
-        val response = userApi.sigup(userRequest)
+        val response = userApi.signup(userRequest)
         handleResponse(response)
     }
 
